@@ -10,7 +10,7 @@ Write-Host "Option (4) Pour installer un logiciel sur un aurtre pc" -ForegroundC
 $response = Read-Host "Entrez le numéro de l'option"
 
 # Traite la réponse de l'utilisateur en fonction de son choix
-switch ($response) {
+switch ($response){
     1 { Powershell.exe -NoExit .\InstallChoco.ps1 }
     2 { choco upgrade all }
     3 { 
@@ -24,14 +24,14 @@ switch ($response) {
     4 { $AdresseIP = Read-Host "Entrez l'adresse ip de votre pc"
         $Logiciel = Read-Host "Que vouslez vous installez ?"
 
-        $session = New-PSSession -ComputerName <adresse_IP>
-        Invoke-Command -Session $session -ScriptBlock { choco install <nom_paquet> }
-        
-
+        $session = New-PSSession -ComputerName Write-Output $AdresseIP
+        Invoke-Command -Session $session -ScriptBlock { choco install Write-Output $Logiciel }
+    
 }
 
     default { Write-Host "Choix non valide" }
 
+}
 
 #Reprend les données du script InstallChocol.ps1
 #Powershell.exe -NoExit .\InstallChoco.ps1
