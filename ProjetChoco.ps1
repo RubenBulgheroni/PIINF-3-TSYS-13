@@ -9,6 +9,16 @@ Write-Host "Option (4) Pour installer un logiciel sur un aurtre pc" -ForegroundC
 # Demande à l'utilisateur de choisir une option
 $response = Read-Host "Entrez le numéro de l'option"
 
+# Message de bienvenu 
+
+$result = Show-CommandBox -Title "Bienvenue" -Message "Voulez-vous continuer ?" -Button "Oui", "Non"
+
+if ($result -eq "Oui") {
+    Write-Host "Vous avez choisi Oui."
+} else {
+    Write-Host "Vous avez choisi Non."
+}
+
 # Traite la réponse de l'utilisateur en fonction de son choix
 switch ($response){
     1 { Powershell.exe -NoExit .\InstallChoco.ps1 }
@@ -22,7 +32,7 @@ switch ($response){
         choco install notepadplusplus.install --force -y -d "C:\Program Files\Config1"
     }
     4 { $AdresseIP = Read-Host "Entrez l'adresse ip de votre pc"
-        $Logiciel = Read-Host "Que vouslez vous installez ?"
+        $Logiciel = Read-Host "Que voulez vous installez ?"
 
         $session = New-PSSession -ComputerName $AdresseIP  
         Invoke-Command -Session $session -ScriptBlock { choco install $Logiciel 
