@@ -24,9 +24,9 @@ switch ($response){
     4 { $AdresseIP = Read-Host "Entrez l'adresse ip de votre pc"
         $Logiciel = Read-Host "Que vouslez vous installez ?"
 
-        $session = New-PSSession -ComputerName Write-Output $AdresseIP
-        Invoke-Command -Session $session -ScriptBlock { choco install Write-Output $Logiciel }
-    
+        $session = New-PSSession -ComputerName $AdresseIP  
+        Invoke-Command -Session $session -ScriptBlock { choco install $Logiciel 
+        }
 }
 
     default { Write-Host "Choix non valide" }
