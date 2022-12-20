@@ -5,7 +5,7 @@ Write-host "-------------------------------------------------------------------"
 Write-Host "Option (1) pour installer Chocolatey" -ForegroundColor Cyan
 Write-Host "Option (2) pour mettre à jour tous ces logiciels" -ForegroundColor Yellow
 Write-Host "Option (3) Pour installer une préconfiguration" -ForegroundColor Green
-
+Write-Host "Option (4) Pour installer un logiciel sur un aurtre pc" -ForegroundColor Magenta
 # Demande à l'utilisateur de choisir une option
 $response = Read-Host "Entrez le numéro de l'option"
 
@@ -21,8 +21,17 @@ switch ($response) {
         choco install jre8 --force -y -d "C:\Program Files\Config1"
         choco install notepadplusplus.install --force -y -d "C:\Program Files\Config1"
     }
-    default { Write-Host "Choix non valide" }
+    4 { $AdresseIP = Read-Host "Entrez l'adresse ip de votre pc"
+        $Logiciel = Read-Host "Que vouslez vous installez ?"
+
+        $session = New-PSSession -ComputerName <adresse_IP>
+        Invoke-Command -Session $session -ScriptBlock { choco install <nom_paquet> }
+        
+
 }
+
+    default { Write-Host "Choix non valide" }
+
 
 #Reprend les données du script InstallChocol.ps1
 #Powershell.exe -NoExit .\InstallChoco.ps1
