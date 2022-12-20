@@ -6,10 +6,9 @@ Write-Host "Option (1) pour installer Chocolatey" -ForegroundColor Cyan
 Write-Host "Option (2) pour mettre à jour tous ces logiciels" -ForegroundColor Yellow
 Write-Host "Option (3) Pour installer une préconfiguration" -ForegroundColor Green
 Write-Host "Option (4) Pour installer un logiciel sur un aurtre pc" -ForegroundColor Magenta
-# Demande à l'utilisateur de choisir une option
-
+# Fait une popup qui demande a l'utilisateur de lancer kle script ou non 
 .\popup.ps1 -Message "Voulez-vous lancer mon script ?"
-
+# Demande à l'utilisateur de choisir une option
 $response = Read-Host "Entrez le numéro de l'option"
 # Traite la réponse de l'utilisateur en fonction de son choix
 switch ($response){
