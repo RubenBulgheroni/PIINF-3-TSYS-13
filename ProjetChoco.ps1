@@ -1,3 +1,5 @@
+#Affiche Une Popup qui demande d'être en Administrateur
+.\PopupAdmin.ps1
 # Affiche les différentes options du menu
 Write-host "-------------------------------------------------------------------" -ForegroundColor red
 Write-Host "Ecrivez le numéro de l'option en fonction de ce que vous choisissez" -ForegroundColor red
@@ -7,7 +9,7 @@ Write-Host "Option (2) pour mettre à jour tous ces logiciels" -ForegroundColor 
 Write-Host "Option (3) Pour installer une préconfiguration" -ForegroundColor Green
 Write-Host "Option (4) Pour installer un logiciel sur un aurtre pc" -ForegroundColor Magenta
 # Fait une popup qui demande a l'utilisateur de lancer le script ou non 
-.\popup.ps1 -Message "Voulez-vous lancer mon script ?"
+.\Popup.ps1 -Message "Voulez-vous lancer mon script ?"
 # Demande à l'utilisateur de choisir une option
 $response = Read-Host "Entrez le numéro de l'option"
 # Traite la réponse de l'utilisateur en fonction de son choix
