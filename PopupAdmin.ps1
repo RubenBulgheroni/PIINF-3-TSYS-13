@@ -22,12 +22,17 @@ $cancelButton.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
 $form.CancelButton = $cancelButton
 $form.Controls.Add($cancelButton)
 
+$label = New-Object System.Windows.Forms.Label
+$label.Location = New-Object System.Drawing.Point(10,20)
+$label.Size = New-Object System.Drawing.Size(280,20)
 $label.Text = 'Appuyez sur "OK" pour passez en mode administrateur'
 $form.Controls.Add($label)
 
+
+
 $form.Topmost = $true
 
-$form.Add_Shown({$textBox.Select()})
+
 $result = $form.ShowDialog()
 
 if ($result -eq [System.Windows.Forms.DialogResult]::OK)
